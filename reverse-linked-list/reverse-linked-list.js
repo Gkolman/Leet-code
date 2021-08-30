@@ -10,10 +10,7 @@
  * @return {ListNode}
  */
 var reverseList = function(head) {
-    
     if (!head) return head
-    // if (!head.next) return head
-
     let pointer = head
     let container = []
     while(pointer) {
@@ -27,6 +24,5 @@ var reverseList = function(head) {
         nextPointer = nextPointer.next
     }
     return newlist
-
 };
     
