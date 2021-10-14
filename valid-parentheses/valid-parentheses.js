@@ -3,11 +3,7 @@
  * @return {boolean}
  */
 
-
 var isValid = function(s) {
-    
-    // iterate over the input string 
-    // variable current open paren/bracket
     let values = {
         '{' : ['opening','}'],
         '}' : ['closing','{'],
