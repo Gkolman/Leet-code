@@ -16,7 +16,6 @@ var numIslands = function(grid) {
             if (grid[row+1][col] ==='1'){recurse(row+1, col)}  // down
         }
     }
-    
     for (var row = 0; row < grid.length; row+=1) {
         for (var col = 0; col < grid[row].length; col++) {
             if (grid[row][col] === '1') {
