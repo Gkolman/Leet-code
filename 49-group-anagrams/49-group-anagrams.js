@@ -19,10 +19,6 @@ var groupAnagrams = function(strs) {
         if ( sorted in anagrams ) { anagrams[sorted].push(i)}
         else { anagrams[sorted] = [i]}
     }
-    // sort the word 
-    // if the word does not exits in hash
-    // add array at the key containing the index of the string
-    // else push to array 
     let result = []
     for (var word in anagrams) {
         let words = []
@@ -33,11 +29,4 @@ var groupAnagrams = function(strs) {
         result.push(words)
     }
     return result
-    
-    // for each key in hash 
-    // create an array with each strs index at the key
-    // return
-    
-
-    
 }
