@@ -3,19 +3,16 @@
  * @return {string[][]}
  */
 
-let sort = (array) => {
-  return array.sort((a, b) => {
-    if (a < b) return -1;
-    if ( a > b) return 1;
-    return 0;
-  })  
-}
 var groupAnagrams = function(strs) {
     // iterate over the array 
     let anagrams = {}
     for (var i = 0; i < strs.length; i++) {
         let word = strs[i]
-        let sorted = sort(word.split('')).join('')
+        let sorted = word.split('').sort((a, b) => {
+                                            if (a < b) return -1;
+                                            if ( a > b) return 1;
+                                            return 0
+                                        }).join('')
         if ( sorted in anagrams ) { anagrams[sorted].push(i)}
         else { anagrams[sorted] = [i]}
     }
