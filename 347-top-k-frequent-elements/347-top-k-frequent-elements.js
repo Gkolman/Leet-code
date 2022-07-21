@@ -18,7 +18,7 @@ var topKFrequent = function(nums, k) {
     let mostOccurances = sorted.slice(0, k)
     let result = []
     for (var occurance of mostOccurances) {
-        console.log('occurance -> ', occurance)
+        // console.log('occurance -> ', occurance)
         result.push(occurance['value'])
     }
     return result
