@@ -11,8 +11,6 @@
 //                  
 
 var maxArea = function(height) {
-    
- 
     let maxWater = 0
     let left = 0;
     let right = height.length - 1;
