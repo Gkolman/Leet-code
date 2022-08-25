@@ -10,38 +10,22 @@
  * @return {ListNode}
  */
 
-let mergeLists = (l1,l2) => {
-    let newList; 
-    let pointer1 = l1
-    let pointer2 = l2 
-    let pointer3 = newList 
-    if (!l2) return l1
-    if (!l1) return l2
-    while (pointer1) {
-        if (!pointer2) break;
-        if (pointer1.val <= pointer2.val) {
-            if (!newList) {newList = new ListNode(pointer1.val); pointer3 = newList}
-            else {pointer3.next = new ListNode(pointer1.val); pointer3 = pointer3.next}
-            pointer1 = pointer1.next 
-        } else { 
-            if (!newList) {newList = new ListNode(pointer2.val); pointer3 = newList}
-            else {pointer3.next = new ListNode(pointer2.val); pointer3 = pointer3.next}
-            pointer2 = pointer2.next 
-        }
-    }
-    while (pointer2) {pointer3.next = new ListNode(pointer2.val); pointer3 = pointer3.next;pointer2 = pointer2.next}
-    while (pointer1) {pointer3.next = new ListNode(pointer1.val); pointer3 = pointer3.next;pointer1 = pointer1.next}
-    return newList
-}
 var mergeKLists = function(lists) {
-    let newList;
-    if (!lists.length) return null
-    if (lists.length ===1) return lists[0]
-    for (var i = 0; i< lists.length - 1; i++) {
-        let current = lists[i]
-        let next = lists[i+1]
-        if (!newList) {newList = mergeLists(current,next)}
-        else {newList = mergeLists(newList,next)}
+    if (!lists || lists.length < 1) { return null}
+    let storage = []
+    for (var list in lists) {
+        let current = lists[list]
+        while (current) {storage.push(current.val);current = current.next}
+    }    
+    let sorted = storage.sort((a, b) => {return a - b})
+    let newList = new ListNode(sorted[0])
+    if (sorted.length === 0) { return null}
+    // if (sorted.length === 1) { return newList}
+    for (var i = 1; i < sorted.length; i++) {
+        let current = newList
+        while(current.next) { current = current.next }
+        let newNode = new ListNode(sorted[i])
+        current.next = newNode
     }
-    return newList === undefined ? null : newList
+    return newList
 };
