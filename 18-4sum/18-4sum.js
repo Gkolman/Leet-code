@@ -18,13 +18,14 @@ var fourSum = function(nums, target) {
                     result.push([nums[i], nums[j], nums[left], nums[right]])
                     while(nums[right] === nums[right-1]) { right -=1; }
                     while(nums[left] === nums[left+1]) { left+=1 }
-                    while(nums[i] === nums[i+1]) { i+=1; }
-                    while(nums[j] === nums[j+1]) { j+=1; }
+
                     right-=1
                     left+=1
                }
             }
+            while(nums[j] === nums[j+1]) { j+=1; }
         }
+        while(nums[i] === nums[i+1]) { i+=1; }
     }
     return result
 };
