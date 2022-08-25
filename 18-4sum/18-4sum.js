@@ -4,14 +4,6 @@
  * @return {number[][]}
  */
 var fourSum = function(nums, target) {
-    /*
-    // [-2,-1, 0, 0, 1, 2]  i = 0 ; j = 1; r = 2 l, = 4
-               2  3. 4.
-                     5
-    
-    */
-    // we need to sort the array
-    let set = new Set()
     let result = []
     nums = nums.sort((a,b) => {return a - b})
     for (var i = 0; i < nums.length - 3; i++) {
@@ -23,11 +15,11 @@ var fourSum = function(nums, target) {
                 if (sum < target) { left+=1}
                 else if (sum > target) {right-=1}
                 else if (sum === target) {
-                    let string = `${nums[i]}${nums[j]}${nums[left]}${nums[right]}`            
-                    if (!set.has(string)) {
-                        result.push([nums[i], nums[j], nums[left], nums[right]])
-                        set.add(string)
-                    }
+                    result.push([nums[i], nums[j], nums[left], nums[right]])
+                    while(nums[right] === nums[right-1]) { right -=1; }
+                    while(nums[left] === nums[left+1]) { left+=1 }
+                    while(nums[i] === nums[i+1]) { i+=1; }
+                    while(nums[j] === nums[j+1]) { j+=1; }
                     right-=1
                     left+=1
                }
