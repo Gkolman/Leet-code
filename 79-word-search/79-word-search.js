@@ -3,11 +3,12 @@
  * @param {string} word
  * @return {boolean}
  */
-let valid = (row, col, board, haveBeen) => {
+let valid = (row, col, board, haveBeen, word) => {
     let key = row + ',' + col
     if (haveBeen.has(key)) {return false}
     if (row < 0 || col < 0) {return false}
     if (row >= board.length || col >= board[0].length) {return false}
+    if (board[row][col] !== word[0]) { return false}
     return true
 }
 var exist = function(board, word) {
@@ -18,26 +19,21 @@ var exist = function(board, word) {
         haveBeen.add(key)
         if (!word.length) { found = true; return}
         
-        if (valid(row, col+1, board, haveBeen)) {
-            if (board[row][col+1] === word[0]) {
-                traverse(row, col+1, word, haveBeen)
-            }
+        if (valid(row, col+1, board, haveBeen, word)) {
+           traverse(row, col+1, word, haveBeen)
         }
-        if (valid(row + 1, col, board, haveBeen)) {
-            if (board[row+1][col] === word[0]) {
-                traverse(row+1, col, word, haveBeen)
-            }            
+        if (!word.length) { found = true; return}
+        if (valid(row + 1, col, board, haveBeen, word)) {
+            traverse(row+1, col, word, haveBeen)
         }
-        if (valid(row, col-1, board, haveBeen)) {
-            if (board[row][col-1] === word[0]) {
-                traverse(row, col-1, word, haveBeen)
-            }            
+        if (!word.length) { found = true; return}        
+        if (valid(row, col-1, board, haveBeen, word)) {
+            traverse(row, col-1, word, haveBeen)
         }
-        if (valid(row -1, col, board, haveBeen)) {
-            if (board[row-1][col] === word[0]) {
-                traverse(row-1, col, word, haveBeen)
-            }            
-        } 
+        if (!word.length) { found = true; return}       
+        if (valid(row -1, col, board, haveBeen, word)) {
+            traverse(row-1, col, word, haveBeen)
+        }
         haveBeen.delete(key)
     }
     for (var i = 0; i < board.length; i++) {
