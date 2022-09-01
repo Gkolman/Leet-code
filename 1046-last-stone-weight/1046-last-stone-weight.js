@@ -11,7 +11,6 @@ let structure = function(elements) {
         let right = this.storage.length - 1
         while (left <= right ) {
             let mid = Math.floor((left + right) / 2) //0
-            let sum = right - mid - left // 0
             if (number === this.storage[mid]) {
                 this.storage.splice(mid, 0, number); return
             } else if (number > this.storage[mid] ){
@@ -26,14 +25,11 @@ var lastStoneWeight = function(stones) {
     while(storage.storage.length > 1) {
         let sum = storage.storage[storage.storage.length - 1]  - storage.storage[storage.storage.length - 2]
         if (sum > 0) {
-            console.log('before', storage.storage)
             storage.storage.splice(storage.storage.length-2, 2)
             storage.add(sum)
-            console.log('after', storage.storage)
          } else {
              storage.storage.splice(storage.storage.length -2, 2)
          }
     }
-    // console.log(storage.storage)
     return !storage.storage.length ? 0 : storage.storage[0]
 };
