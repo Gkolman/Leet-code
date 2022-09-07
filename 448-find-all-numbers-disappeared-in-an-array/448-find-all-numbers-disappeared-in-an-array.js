@@ -11,7 +11,7 @@ var findDisappearedNumbers = function(nums) {
     // [4,3,2,7,8,2,3,1] 4 3
     // [4,3,2,-3,8,2,3,1]
     //   
-    console.log(nums)
+    // console.log(nums)
     let result = []
     for (var i = 0; i < nums.length; i++) {
         if (nums[i] > 0) {result.push( i + 1)}
