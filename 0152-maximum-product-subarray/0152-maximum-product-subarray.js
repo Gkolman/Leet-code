@@ -3,7 +3,6 @@
  * @return {number}
  */
 var maxProduct = function(nums) {
-
     let result = Math.max(...nums)
     let currentMax = 1
     let currentMin = 1
