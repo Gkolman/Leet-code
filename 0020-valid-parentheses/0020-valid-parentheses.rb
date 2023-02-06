@@ -1,11 +1,7 @@
 # @param {String} s
 # @return {Boolean}
 def is_valid(s)
-    pairs = {
-        "}" => "{",
-        ")" => "(",
-        "]" => "[",
-    }
+    pairs = { "}" => "{", ")" => "(", "]" => "[" }
     stack = []
     s.each_char do |letter|
         if pairs[letter]
