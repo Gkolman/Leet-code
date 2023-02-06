@@ -1,7 +1,6 @@
 # @param {String[]} strs
 # @return {String}
 def longest_common_prefix(strs)
-    strs = strs.sort()
     i = 1
     shorted_prefix = strs[0].split('')
     while i < strs.length do
