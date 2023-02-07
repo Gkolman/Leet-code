@@ -8,7 +8,7 @@ def search_insert(nums, target)
     left = 0
     right = nums.length-1
     while left <= right do
-        middle = ((right + left) / 2).ceil
+        middle = ((right + left) / 2).floor
         if nums[middle] == target
             return middle
         elsif nums[middle] < target
