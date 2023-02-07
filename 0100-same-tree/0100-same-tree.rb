@@ -10,17 +10,15 @@
 # @param {TreeNode} p
 # @param {TreeNode} q
 # @return {Boolean}
-def is_same_tree(p, q, valid = true)
-    if valid == false 
-        return valid
-    elsif p == nil && q == nil
-        return valid
+def is_same_tree(p, q)
+    if p == nil && q == nil
+        return true
     elsif p && q == nil || p == nil && q
-        return valid = false
+        return false
     elsif p.val != q.val
-        return valid = false
+        return false
     end
-    if !(is_same_tree(p.left, q.left, valid)) || !(is_same_tree(p.right, q.right, valid))
+    if !(is_same_tree(p.left, q.left)) || !(is_same_tree(p.right, q.right))
         false
     else
         true
