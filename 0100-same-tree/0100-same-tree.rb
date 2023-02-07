@@ -14,15 +14,13 @@ def is_same_tree(p, q, valid = true)
     if valid == false 
         return valid
     elsif p == nil && q == nil
-       return valid
+        return valid
     elsif p && q == nil || p == nil && q
         return valid = false
     elsif p.val != q.val
         return valid = false
     end
-    if is_same_tree(p.left, q.left, valid) == false
-        false
-    elsif is_same_tree(p.right, q.right, valid) == false
+    if is_same_tree(p.left, q.left, valid) == false || is_same_tree(p.right, q.right, valid) == false
         false
     else
         true
