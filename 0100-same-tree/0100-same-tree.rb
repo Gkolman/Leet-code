@@ -20,7 +20,7 @@ def is_same_tree(p, q, valid = true)
     elsif p.val != q.val
         return valid = false
     end
-    if is_same_tree(p.left, q.left, valid) == false || is_same_tree(p.right, q.right, valid) == false
+    if !!!(is_same_tree(p.left, q.left, valid)) || !!!(is_same_tree(p.right, q.right, valid))
         false
     else
         true
