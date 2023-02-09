@@ -13,6 +13,7 @@ var threeSumClosest = function(nums, target) {
         let right = nums.length-1
         while (middle < right) {            
             let sum = nums[left] + nums[middle] + nums[right]
+            if (sum === target) { return target}
             results.push(sum)
             let newRange = Math.abs(sum - target)
             if (newRange < minRange) {
@@ -21,11 +22,9 @@ var threeSumClosest = function(nums, target) {
             }
             if (sum < target) {  
                 middle+=1
-            } else if (sum > target)  {
+            } else {
                 right-=1
-            } else if (sum === target){
-                return sum
-            }
+            } 
         }
     } 
     return result
