@@ -13,17 +13,14 @@ var findMinFibonacciNumbers = function(k) {
        second = sum
        values.push(sum)
     }
-    if (values.indexOf(k) > -1) { return 1 }
-    else { 
-        let result = 0
-        let i = values.length - 1
-        while (k > 0) {
-            while (k >= values[i]) {     
-                result +=1
-                k-= values[i]
-            }
-            i-=1
+    let result = 0
+    let i = values.length - 1
+    while (k > 0) {
+        while (k >= values[i]) {     
+            result +=1
+            k-= values[i]
         }
-        return result
-    } 
+        i-=1
+    }
+    return result
 };
