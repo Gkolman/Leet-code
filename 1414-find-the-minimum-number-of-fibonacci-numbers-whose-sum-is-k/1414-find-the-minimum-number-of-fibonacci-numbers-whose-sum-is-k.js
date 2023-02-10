@@ -14,19 +14,17 @@ var findMinFibonacciNumbers = function(k) {
        second = sum
        values.push(sum)
     }
-    const traverse = (target, depth = 0, memo={}) => {
-        if (memo[0]) { return memo }
-        if (!memo[target]) {memo[target] = depth} 
-        else {
-            if (memo[target] <= depth){ return memo }
-            else { memo[target] = depth }
-        }
-        if (target <= 0 ) { return memo }
-        for (var i = values.length -1; i > -1; i--) {
-            traverse(target - values[i], depth+1, memo)
-        }
-        return memo
-    }
     if (values.indexOf(k) > -1) { return 1 }
-    else { return traverse(k)[0] } 
+    else { 
+        let result = 0
+        let i = values.length - 1
+        while (k > 0) {
+            while (k >= values[i]) {     
+                result +=1
+                k-= values[i]
+            }
+            i-=1
+        }
+        return result
+    } 
 };
