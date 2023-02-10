@@ -3,9 +3,8 @@
  * @return {number}
  */
 var findMinFibonacciNumbers = function(k) {
-    const cache = {1: 1, 2: 2, 3: 3}
     let reached = false
-    const values = [1,1]
+    const values = [1]
     let first = 1
     let second = 1
     while (values[values.length - 1] < k) {
