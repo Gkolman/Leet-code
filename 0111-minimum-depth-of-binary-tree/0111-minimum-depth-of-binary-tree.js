@@ -15,11 +15,11 @@ var minDepth = function(root) {
     if (!root) { return 0 }
     let traverse = (head, depth) => {
         if (!head) { return }
+        if (result <= depth) { return }
         if (!head.left && !head.right) { result = Math.min(result, depth); return }
         traverse(head.left, depth+1)
         traverse(head.right, depth+1)
     }
-    
     traverse(root, 1)
     return result
 };
