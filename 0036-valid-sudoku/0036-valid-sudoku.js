@@ -23,9 +23,7 @@ const invalidSmall = (row, col, board) => {
     for (var i = row; i < row+3; i++) {
         for (var j = col; j < col+3; j++ ) {
             const char = board[i][j]
-            if (char === '.') { continue }
-            else if (set.has(char)) { return true }
-            else { set.add(char) }
+            if (invalidChar(set, char)) { return true }
         }
     }
     return false
@@ -36,9 +34,13 @@ const invalidRowCol = (pos, board, type = 'col') => {
     const set = new Set()
     for (var i = 0; i < 9; i ++) {
         const char = type === 'col' ? board[i][pos] : board[pos][i]
-        if (char === '.') { continue }
-        else if (set.has(char)) { return true }
-        else { set.add(char) }
+        if (invalidChar(set, char)) { return true }
     }
     return false
+}
+
+const invalidChar = (set, char) => {
+    if (char === '.') { return false }
+    else if (set.has(char)) { return true }
+    else {set.add(char)}
 }
