@@ -3,9 +3,6 @@
  * @return {boolean}
  */
 var isValidSudoku = function(board) {
-    
-    // validate if the individual squares are valid
-    // validate if the whole square is valid
     for (var row = 0; row < 9; row+=3) {
         for (var col = 0; col < 9; col +=3) {
             if (invalidSmall(row, col, board)) { 
@@ -14,7 +11,6 @@ var isValidSudoku = function(board) {
             }
         }
     }
-
     for (var i = 0; i < 9; i ++) {
         if (invalidSet(i, board)) { return false }
         if (invalidSet(i, board, 'row')) { return false }
