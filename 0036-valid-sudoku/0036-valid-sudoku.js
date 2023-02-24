@@ -12,8 +12,8 @@ var isValidSudoku = function(board) {
         }
     }
     for (var i = 0; i < 9; i ++) {
-        if (invalidSet(i, board)) { return false }
-        if (invalidSet(i, board, 'row')) { return false }
+        if (invalidRowCol(i, board)) { return false }
+        if (invalidRowCol(i, board, 'row')) { return false }
     } 
     return true
 };
@@ -31,7 +31,7 @@ const invalidSmall = (row, col, board) => {
     return false
 }
 
-const invalidSet = (pos, board, type = 'col') => {
+const invalidRowCol = (pos, board, type = 'col') => {
     
     const set = new Set()
     for (var i = 0; i < 9; i ++) {
