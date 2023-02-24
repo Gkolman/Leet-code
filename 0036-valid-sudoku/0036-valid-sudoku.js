@@ -6,7 +6,6 @@ var isValidSudoku = function(board) {
     for (var row = 0; row < 9; row+=3) {
         for (var col = 0; col < 9; col +=3) {
             if (invalidSmall(row, col, board)) { 
-                console.log("hitting small")
                 return false 
             }
         }
@@ -30,7 +29,6 @@ const invalidSmall = (row, col, board) => {
 }
 
 const invalidRowCol = (pos, board, type = 'col') => {
-    
     const set = new Set()
     for (var i = 0; i < 9; i ++) {
         const char = type === 'col' ? board[i][pos] : board[pos][i]
