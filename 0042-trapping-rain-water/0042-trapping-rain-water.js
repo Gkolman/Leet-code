@@ -22,15 +22,12 @@ var trap = function(height) {
             }
             r+=1
         }
-        // console.log("rightMaxIndex", rightMaxIndex)
         let minHeight = Math.min(leftVal, rightMax)
         let rangeSum = 0
         for (let pointer = l+1; pointer <= rightMaxIndex-1; pointer+=1 ) {
             let val = height[pointer]
             let sum = minHeight - val
-            // if (sum >= 0) {
                 rangeSum += sum
-            // }
         }
         total += rangeSum
         l = rightMaxIndex - 1
