@@ -1,41 +1,28 @@
 var trap = function(height) {
     if (height?.length < 3 )  { return 0 }
     let total = 0
-    let l = 0
-    for (let l = 0; l < height.length -1; l++) {
-        let leftVal = height[l]
-        if (leftVal === 0) {
-            continue
-        }
-        let r = l+1
-        let rightMax = 0;
-        let rightMaxIndex = r;
-        let rightLowestIndex = r
-        let rightMin = r
-        while (r < height.length) {
-             if (height[r] > rightMax) {
-                 rightMax = height[r]
-                 rightMaxIndex = r
-             }
-            if (height[r] >= leftVal) {
-                break
+    let lp = 0;
+    let rp = height.length - 1
+    let leftMax = 0
+    let rightMax = 0
+    while (lp <= rp) {
+        let leftVal = height[lp]
+        let rightVal = height[rp]
+        leftMax = Math.max(leftMax, leftVal)
+        rightMax = Math.max(rightMax, rightVal)
+        let min = Math.min(leftMax, rightMax) 
+        if (rightVal < leftVal)  {
+            if (min - rightVal > 0) {
+             total += min - rightVal   
             }
-            r+=1
+            rp-=1
+            
+        } else {
+            if (min - leftVal > 0) {
+             total += min - leftVal   
+            }
+            lp+=1
         }
-        let minHeight = Math.min(leftVal, rightMax)
-        let rangeSum = 0
-        for (let pointer = l+1; pointer <= rightMaxIndex-1; pointer+=1 ) {
-            let val = height[pointer]
-            let sum = minHeight - val
-                rangeSum += sum
-        }
-        total += rangeSum
-        l = rightMaxIndex - 1
     }
     return total
 }
-/*
-
-
-
-*/
